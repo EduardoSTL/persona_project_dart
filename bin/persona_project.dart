@@ -4,7 +4,7 @@ void main() {
   final initEmpleado = Empleado(sueldo: 300);
   print('Profesor: $initProfesor');
   print('Director: $initDirector');
-  print('Director: $initEmpleado');
+  print('Empleado: $initEmpleado');
 }
 
 interface class Persona{
