@@ -3,9 +3,9 @@ void main() {
   final initDirector = Director(nombre: 'Luis', sueldo: 800);
   final initEmpleado = Empleado(nombre: 'Rodrigo', sueldo: 500);
 
-  print('[ P1: $initProfesor }');
-  print('[ P2: $initDirector ]');
-  print('[ P3: $initEmpleado ]');
+  print('P1: $initProfesor');
+  print('P2: $initDirector');
+  print('P3: $initEmpleado');
 }
 
 abstract class Persona {
@@ -38,7 +38,7 @@ class Profesor extends Persona implements Salario {
   @override
   String toString() {
     final tipoStr = tipo.toString().split('.').last;
-    return 'Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr'; 
+    return '[Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr]'; 
   }
 }
 
@@ -53,7 +53,7 @@ class Director extends Persona implements Salario {
   @override
   String toString() {
     final tipoStr = tipo.toString().split('.').last;
-    return 'Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr'; 
+    return '[Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr]'; 
   }
 }
 
@@ -68,6 +68,6 @@ class Empleado extends Persona implements Salario {
   @override
   String toString() {
     final tipoStr = tipo.toString().split('.').last;
-    return 'Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr'; 
+    return '[Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr]'; 
   }
 }
