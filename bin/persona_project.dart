@@ -1,84 +1,73 @@
 void main() {
-  final initProfesor = Profesor(sueldo: 100);
-  final initDirector = Director(sueldo: 500);
-  final initEmpleado = Empleado(sueldo: 300);
-  print('Profesor: $initProfesor');
-  print('Director: $initDirector');
-  print('Empleado: $initEmpleado');
+  final initProfesor = Profesor(nombre: 'Oscar', sueldo: 400);
+  final initDirector = Director(nombre: 'Luis', sueldo: 800);
+  final initEmpleado = Empleado(nombre: 'Rodrigo', sueldo: 500);
+
+  print('[ P1: $initProfesor }');
+  print('[ P2: $initDirector ]');
+  print('[ P3: $initEmpleado ]');
 }
 
-interface class Persona{
+abstract class Persona {
   String nombre;
   final TipoPersona tipo;
 
   Persona({
     required this.nombre,
-    required this.tipo
+    required this.tipo,
   });
 }
 
-abstract class Salario{
+abstract class Salario {
   double salario;
 
   Salario({
-    required this.salario
+    required this.salario,
   });
 }
+enum TipoPersona { director, empleado, profesor }
 
-enum TipoPersona{director, empleado, profesor}
-
-class Profesor extends Persona implements Salario{
-  Profesor({required double sueldo})
-      : salario = sueldo, super(nombre: 'Osvaldo', tipo: TipoPersona.profesor);
-
-  @override
-  double salario;
-
-  @override
-  void Salario(double amount){
-    salario = (amount * 0.5);
-  }
-
-  @override
-  String toString(){
-  return 'Salario: $salario, - Nombre: $nombre, Tipo: $tipo';
-}
-}
-
-class Director extends Persona{
-  Director({required double sueldo})
-      : salario = sueldo, super(nombre: 'Rodrigo', tipo: TipoPersona.director);
+class Profesor extends Persona implements Salario {
+  Profesor({required String nombre, required double sueldo})
+      : salario = sueldo,
+        super(nombre: nombre, tipo: TipoPersona.profesor);
 
   @override
   double salario;
 
   @override
-  void Salario(double amount){
-    salario = (amount * 0.5);
+  String toString() {
+    final tipoStr = tipo.toString().split('.').last;
+    return 'Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr'; 
   }
-
-  @override
-  String toString(){
-  return 'Salario: $salario, - Nombre: $nombre, Tipo: $tipo';
-}
-  
-  
 }
 
-class Empleado extends Persona{
-Empleado({required double sueldo})
-      : salario = sueldo, super(nombre: 'Rodrigo', tipo: TipoPersona.empleado);
+class Director extends Persona implements Salario {
+  Director({required String nombre, required double sueldo})
+      : salario = sueldo,
+        super(nombre: nombre, tipo: TipoPersona.director);
 
   @override
   double salario;
 
   @override
-  void Salario(double amount){
-    salario = (amount * 0.5);
+  String toString() {
+    final tipoStr = tipo.toString().split('.').last;
+    return 'Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr'; 
   }
+}
+
+class Empleado extends Persona implements Salario {
+  Empleado({required String nombre, required double sueldo})
+      : salario = sueldo,
+        super(nombre: nombre, tipo: TipoPersona.empleado);
 
   @override
-  String toString(){
-  return 'Salario: $salario, - Nombre: $nombre, Tipo: $tipo';
-}  
+  double salario;
+
+  @override
+  String toString() {
+    final tipoStr = tipo.toString().split('.').last;
+    return 'Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr'; 
+  }
 }
