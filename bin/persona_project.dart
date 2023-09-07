@@ -36,7 +36,7 @@ class Profesor extends Persona implements Salario{
 
   @override
   void Salario(double amount){
-    salario -= (amount * 0.5);
+    salario = (amount * 0.5);
   }
 
   @override
@@ -54,7 +54,7 @@ class Director extends Persona{
 
   @override
   void Salario(double amount){
-    salario -= (amount * 0.5);
+    salario = (amount * 0.5);
   }
 
   @override
@@ -74,7 +74,7 @@ Empleado({required double sueldo})
 
   @override
   void Salario(double amount){
-    salario -= (amount * 0.5);
+    salario = (amount * 0.5);
   }
 
   @override
