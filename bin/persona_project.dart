@@ -8,7 +8,7 @@ void main() {
   print('P3: $initEmpleado');
 }
 
-abstract class Persona {
+class Persona {
   String nombre;
   final TipoPersona tipo;
 
