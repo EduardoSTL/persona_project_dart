@@ -7,17 +7,25 @@ void main() {
   print('P2: $initDirector');
   print('P3: $initEmpleado');
 }
+enum TipoPersona { director, empleado, profesor }
 
 class Persona {
   String nombre;
-  final TipoPersona tipo;
   int edad;
+  final TipoPersona tipo;
 
   Persona({
     required this.nombre,
     required this.edad,
     required this.tipo
   });  
+
+  @override
+  String toString(){
+    //emun value to tipoStr
+    final tipoStr = tipo.toString().split('.').last;
+    return '[Nombre: $nombre, Edad: $edad, Tipo: $tipoStr]';
+  }
 }
 
 abstract class Salario {
@@ -27,7 +35,6 @@ abstract class Salario {
     required this.salario,
   });
 }
-enum TipoPersona { director, empleado, profesor }
 
 class Profesor extends Persona implements Salario {
   Profesor({required String nombre, required double sueldo, required int edad})
@@ -39,8 +46,7 @@ class Profesor extends Persona implements Salario {
 
   @override
   String toString() {
-    final tipoStr = tipo.toString().split('.').last;
-    return '[Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr]'; 
+    return '${super.toString()} Salario: \$$salario';
   }
 }
 
@@ -54,8 +60,7 @@ class Director extends Persona implements Salario {
 
   @override
   String toString() {
-    final tipoStr = tipo.toString().split('.').last;
-    return '[Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr]'; 
+    return '${super.toString()} Salario: \$$salario';
   }
 }
 
@@ -69,7 +74,6 @@ class Empleado extends Persona implements Salario {
 
   @override
   String toString() {
-    final tipoStr = tipo.toString().split('.').last;
-    return '[Salario: \$$salario, Nombre: $nombre, Tipo: $tipoStr]'; 
+    return '${super.toString()} Salario: \$$salario';
   }
 }
