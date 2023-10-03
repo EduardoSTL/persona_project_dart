@@ -1,5 +1,6 @@
 // Enum para representar roles
 enum Rol { empleado, profesor, director }
+// prueba de clone
 
 // Clase base Persona
 class Persona {
